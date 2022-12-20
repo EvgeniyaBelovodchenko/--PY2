@@ -19,9 +19,14 @@
 # TODO Написать 3 класса с документацией и аннотацией типов
 class Kitty:
     """
-    >>> cat = Kitty(2, 'black', 'mazik')
-    >>> cat.meows(True)
-    True
+    Создание и подготовка к работе объекта "Котик"
+
+    :param age: Возраст кота
+    :param fur_colour: Цвет шерсти кота
+    :param name: Кличка кота
+
+    Примеры:
+    >>> cat = Kitty(2, 'black', 'mazik') # инициализация экемпляра класса
     """
 
     def __init__(self, age: int, fur_colour: str, name: str):
@@ -42,15 +47,51 @@ class Kitty:
         self.name = name
 
     def is_cute(self) -> bool:
+        """
+        Функция, которая проверяет является ли котик милым
+
+        :return: Является ли кот милым
+
+        Примеры:
+        >>> cat = Kitty(2, 'black', 'mazik') # инициализация экемпляра класса
+        >>> cat.is_cute()
+
+        """
         ...
 
-    def meows(self, can_meow: bool):
+    def meows(self, can_meow: bool) -> bool:
+        """
+        Кот мяукает
+
+        :param can_meow: умение кота мяукать (не все коты умеют)
+
+        :raise TypeError: Если ответ не true или false, то вызываем ошибку
+
+        :return: Мяукает ли кот
+
+        Примеры:
+        >>> cat = Kitty(2, 'black', 'mazik') # инициализация экемпляра класса
+        >>> cat.meows(True)
+        True
+        """
         if not isinstance(can_meow, bool):
             raise TypeError('Надо ответить True или False')
         return can_meow
 
 
 class Steel:
+    """
+    Создание и подготовка к работе объекта "Сталь"
+
+    :param amount_of_carbon: Количество углерода в стали
+    :param melting_temperature: Температура плавления стали
+
+    :raise ValueError: Если количество углерода меньше или равно 0, то возвращается ошибка.
+    :raise ValueError: Если температура плавления не входит в диапазон 1300-2000, то возвращается ошибка.
+
+    Примеры:
+    >>> basic_steel = Steel(0.26, 1508) # инициализация экемпляра класса
+    """
     def __init__(self, amount_of_carbon: float, melting_temperature: int):
         if not isinstance(amount_of_carbon, float):
             raise TypeError("Количество углерода - это float")
@@ -60,26 +101,48 @@ class Steel:
 
         if not isinstance(melting_temperature, int):
             raise TypeError('Температура плавления - это целое число')
-        if 2000 < melting_temperature < 1000:
-            raise ValueError('Температура плавления может быть в диапазоне 1000-2000')
+        if not 1300 <= melting_temperature <= 2000:
+            raise ValueError('Температура плавления может быть в диапазоне 1300-2000')
         self.melting_temperature = melting_temperature
 
-    def is_low_alloy(self, amount_of_alloy: float):
+    def add_alloy(self, amount_of_alloy: float) -> None:
+        """
+        Функция, которая добавляет примеси
+
+        :param amount_of_alloy: Количество добавляемой примеси
+
+        :raise TypeError: Если ответ не float, то вызываем ошибку
+
+        Примеры:
+        >>> basic_steel = Steel(0.26, 1508)
+        >>> basic_steel.add_alloy(12.564)
+        """
         if not isinstance(amount_of_alloy, float):
             raise TypeError('Количество примеси может быть только float')
         ...
 
-    def melting_method(self, method: str):
+    def heating_treatment(self, method: str) -> None:
+        """
+        Способ термообработки стали.
+
+        :param method: Метод термообработки
+        :raise TypeError: Если метод термообработки не является типом str, то вызываем ошибку
+
+        """
         if not isinstance(method, str):
-            raise TypeError('Метод плавки может быть только str')
+            raise TypeError('Метод термообработки может быть только типа str')
         ...
 
 
 class Developer():
     """
-    >>> a = Developer(3, 'HTML')
-    >>> a.tired_of_work(True)
-    True
+    Создание и подготовка к работе объекта "Разработчик"
+
+    :param experience: Опыт работы в годах
+    :param dev_language: Язык программирования разработчика
+
+    Примеры:
+    >>> ivan = Developer(3, 'Go') # инициализация экемпляра класса
     """
 
     def __init__(self, experience: int, dev_language: str):
@@ -95,14 +158,36 @@ class Developer():
             raise ValueError("Это что за язык такой?")
         self.dev_language = dev_language
 
-    def tired_of_work(self, work_after_six: bool):
+    def tired_of_work(self, work_after_six: bool) -> bool:
+        """
+        Функция, которая проверяет, устал ли разработчик от работы
+
+        :param work_after_six: Работает ли разраб после 6
+
+        :raise TypeError: Если ответ не true или false, то вызываем ошибку
+
+        :return: Является ли разработчик уставшим/выгоревшим
+
+        Примеры:
+        >>> ivan = Developer(3, 'Go') # инициализация экемпляра класса
+        >>> ivan.tired_of_work(True)
+        True
+        """
         if not isinstance(work_after_six, bool):
             raise TypeError('Надо ответить True или False')
         return work_after_six
 
     def hire(self) -> bool:
-        ...
+        """
+        Функция, решающая нанять ли разработчика
 
+        :return: Нанимать разработчика или нет
+
+        Примеры:
+        >>> ivan = Developer(3, 'Go') # инициализация экемпляра класса
+        >>> ivan.hire()
+        """
+        ...
 
 if __name__ == "__main__":
     # TODO работоспособность экземпляров класса проверить с помощью doctest
